@@ -1,8 +1,16 @@
 <template>
-  <Base-container>
-    <the-header></the-header>
-  </Base-container>
-  <home-vue></home-vue>
+  <header>
+    <base-container>
+      <the-header></the-header>
+    </base-container>
+  </header>
+  <section class="home">
+    <!-- <base-container> -->
+    <home-vue></home-vue>
+    <!-- </base-container> -->
+  </section>
+
+
   <about-vue></about-vue>
   <portfolio-vue></portfolio-vue>
   <contact-vue></contact-vue>
@@ -31,11 +39,45 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss"  >
+@import './sass/variables/vars';
+@import './sass/helpers/media-queries';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
+}
+
+header {
+  width: 100%;
+  height: 50px;
+  background-color: $BG_color;
+ 
+}
+
+.home {
+  // width: 100%;
+  height: 1170px;
+  background-image: url('./imgs/home-bg.png');
+
+  @include breakpoint(xs) {
+    background-image: none;
+    background-color: $BG_color;
+    height: auto;
+  }
+
+  @include breakpoint(sm) {
+    background-image: none;
+    background-color: $BG_color;
+    height: auto;
+  }
 }
 </style>
