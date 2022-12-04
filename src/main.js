@@ -6,5 +6,6 @@ import './registerServiceWorker'
 import store from './store'
 app.use(store)
 
-
+import BaseContainer from './assets/BaseContainer.vue'
+app.component('base-container',BaseContainer)
 app.mount('#app')
