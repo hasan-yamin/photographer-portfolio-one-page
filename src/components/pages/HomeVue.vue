@@ -99,7 +99,7 @@ export default {
 
 .root {
     width: 100%;
-    padding-top: 50px;
+    // padding-top: 50px;
     background-size: cover;
     display: flex;
     justify-content: center;

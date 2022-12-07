@@ -1,27 +1,32 @@
 <template>
-    <div class="header">
+    <nav class="nav">
         <div class="logo">
             <img src="../imgs/logo.png" alt="">
             <span>HKY</span>
         </div>
-        <nav>
+        <div class="main_list" :class="{ 'show-list': showMenu }" id="mainListDiv">
             <ul>
                 <li :class="{ active: activeMenu === 'home' }" @click="isActive('home')">home</li>
                 <li :class="{ active: activeMenu === 'about' }" @click="isActive('about')">about</li>
                 <li :class="{ active: activeMenu === 'portfolio' }" @click="isActive('portfolio')">portfolio</li>
                 <li :class="{ active: activeMenu === 'contact' }" @click="isActive('contact')">contact</li>
             </ul>
-        </nav>
-    </div>
+        </div>
+        <div class="media_button" :class="{ active: showMenu }">
+            <button class="main_media_button" id="mediaButton" @click="menu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
 </template>
 
 <script>
-import store from '@/store';
-
 export default {
     data() {
         return {
-            // activeMenu: this.getViewSection(),
+            showMenu: false
         }
     },
     computed: {
@@ -32,6 +37,9 @@ export default {
         }
     },
     methods: {
+        menu() {
+            this.showMenu = !this.showMenu
+        },
         isActive(value) {
             this.$store.dispatch('setViewSection', value)
         },
@@ -46,73 +54,133 @@ export default {
 @import '../sass/helpers/media-queries';
 @import '../sass/variables/vars';
 
-.header {
-    // width: 100%;
+.nav {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 25px 0;
+    width: 100%;
+    background-color: $BG_color;
+
+    @include breakpoint(xs) {
+        align-items: flex-start;
+    }
+
+    @include breakpoint(sm) {
+        align-items: flex-start;
+    }
 
     .logo {
+        width: 180px;
         display: flex;
         justify-content: center;
         align-items: center;
-
-        img {
-            margin-right: 5px;
-        }
-
-        span {
-            text-transform: uppercase;
-            font-weight: bold;
-            font-size: 25px;
-            line-height: 30px;
-            color: $Font_color;
-        }
-    }
-
-    ul {
-        // list-style: none;
-        display: flex;
-        gap: 50px;
+        gap: 10px;
 
         @include breakpoint(xs) {
-            gap: 20px;
+            height: 70px;
         }
 
         @include breakpoint(sm) {
-            gap: 20px;
+            height: 70px;
         }
 
-        li {
-            font-size: 16px;
-            letter-spacing: 1px;
-            line-height: 24px;
+        img {}
+
+        span {
+            text-decoration: none;
             color: $Font_color;
-            cursor: pointer;
+            font-size: 1.8em;
             text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
 
-            &:hover {
-                color: #000;
-            }
+    .main_list {
+        align-self: flex-start;
 
-            &.active {
-                color: #000;
-            }
+        @include breakpoint(xs) {
+            display: none;
+        }
+
+        @include breakpoint(sm) {
+            display: none;
+        }
+
+        &.show-list {
+            display: flex;
+        }
+
+        ul {
+            display: flex;
+            gap: 50px;
+            list-style: none;
 
             @include breakpoint(xs) {
-                font-size: 12px;
-                font-weight: bold;
+                flex-direction: column;
+                gap: 0;
             }
 
             @include breakpoint(sm) {
-                font-size: 13px;
-                font-weight: bold;
+                flex-direction: column;
+                gap: 0;
             }
 
+            li {
+                color: $Font_color;
+                line-height: 50px;
+                text-transform: uppercase;
+                cursor: pointer;
+
+                &:hover,
+                &.active {
+                    color: $hover3;
+                }
+            }
+        }
+    }
+
+    .media_button {
+        width: 40px;
+        background-color: transparent;
+        display: none;
+        justify-content: center;
+        align-items: center;
+
+        @include breakpoint(xs) {
+            display: flex;
+            height: 70px;
         }
 
+        @include breakpoint(sm) {
+            display: flex;
+            height: 70px;
+        }
+
+        .main_media_button {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            span {
+                width: 100%;
+                height: 5px;
+                border-radius: 6px;
+                background-color: #000;
+            }
+
+            &:hover {
+                transform: rotateY(180deg);
+                transition: all 0.5s;
+
+                span {
+                    background-color: #c0c0c0;
+                }
+            }
+        }
     }
 }
 </style>

@@ -28,7 +28,7 @@ export default {
   components: {
     BaseContainer,
     TheHeader,
-    HomeVue,
+     HomeVue,
     AboutVue,
     PortfolioVue,
     ContactVue,
@@ -68,15 +68,6 @@ export default {
 
 header {
   width: 100%;
-  height: 50px;
   background-color: $BG_color;
-
-}
-
-.home {
-  // width: 100%;
-
-  // background-image: url('./imgs/home-bg.png');
-
 }
 </style>
