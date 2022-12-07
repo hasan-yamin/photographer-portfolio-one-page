@@ -76,7 +76,7 @@ export default {
                     font-size: 18px;
                     background-color: transparent;
                     resize: none;
-
+                    outline: none;
                 }
             }
 

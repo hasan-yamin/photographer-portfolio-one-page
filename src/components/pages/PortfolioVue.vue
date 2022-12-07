@@ -6,21 +6,33 @@
                 <p> minim veniam, quis nostrud exercitation ullamco laboris nisi </p>
                 <div class="galary">
                     <div class="videos">
-                        <img src="../../imgs/p-1.jpg" alt="">
-                        <img src="../../imgs/p-2.jpg" alt="">
+                        <div class="video">
+                            <img src="../../imgs/p-1.jpg" alt="">
+                        </div>
+                        <div class="video">
+                            <img src="../../imgs/p-2.jpg" alt="">
+                        </div>
                     </div>
                     <div class="photos">
-                        <img src="../../imgs/p-3.jpg" alt="">
-                        <img src="../../imgs/p-4.jpg" alt="">
+                        <div class="photo">
+                            <img src="../../imgs/p-3.jpg" alt="">
+                        </div>
+                        <div class="photo">
+                            <img src="../../imgs/p-4.jpg" alt="">
+                        </div>
 
                         <div>
-                            <img src="../../imgs/p-5.jpg" alt="">
-                            <img src="../../imgs/p-6.jpg" alt="">
+                            <div class="photo">
+                                <img src="../../imgs/p-5.jpg" alt="">
+                            </div>
+                            <div class="photo">
+                                <img src="../../imgs/p-6.jpg" alt="">
+                            </div>
 
                         </div>
                     </div>
                 </div>
-                <button>More</button>
+                <button>see More</button>
             </div>
         </base-container>
     </div>
@@ -57,7 +69,7 @@ export default {
         p {
             font-size: 16px;
             letter-spacing: 1px;
-            margin-bottom: 30px;
+            margin-bottom: 60px;
         }
 
         .galary {
@@ -92,8 +104,26 @@ export default {
                     width: 100%;
                 }
 
-                img {
-                    width: 100%;
+                .video {
+                    position: relative;
+
+                    &:hover {
+                        &::before {
+                            position: absolute;
+                            content: '';
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: $hover;
+                            opacity: 0.5;
+                        }
+                    }
+
+                    img {
+                        width: 100%;
+
+                    }
                 }
             }
 
@@ -113,9 +143,27 @@ export default {
                     width: 100%;
                 }
 
-                >img {
-                    width: 100%;
+                .photo {
+                    position: relative;
+
+                    &:hover {
+                        &::before {
+                            position: absolute;
+                            content: '';
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+                            background-color: $hover;
+                            opacity: 0.5;
+                        }
+                    }
+
+                    img {
+                        width: 100%;
+                    }
                 }
+
 
                 >div {
                     display: flex;
@@ -123,7 +171,7 @@ export default {
                     align-items: flex-start;
                     width: 100%;
 
-                    img {
+                    .photo {
                         &:first-child {
                             width: 65%;
                         }
@@ -131,7 +179,10 @@ export default {
                         &:last-child {
                             width: 34%;
                         }
+
+                        img {}
                     }
+
                 }
             }
         }
@@ -146,6 +197,10 @@ export default {
             margin-bottom: 80px;
             text-transform: uppercase;
             cursor: pointer;
+
+            &:hover {
+                background-color: $hover3;
+            }
         }
     }
 }

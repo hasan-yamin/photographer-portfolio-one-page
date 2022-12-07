@@ -12,13 +12,13 @@ export default createStore({
   mutations: {
     setViewSection(state, payload) {
       state.viewSection = payload;
-      console.log('mutation', state.viewSection)
+      // console.log('mutation', state.viewSection)
     }
   },
   actions: {
     setViewSection(context, payload) {
       context.commit('setViewSection', payload)
-      console.log('action')
+      // console.log('action')
     }
   },
   modules: {

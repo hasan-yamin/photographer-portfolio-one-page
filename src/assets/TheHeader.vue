@@ -1,6 +1,9 @@
 <template>
     <div class="header">
-        <div class="logo"><img src="" alt="">أحمد</div>
+        <div class="logo">
+            <img src="../imgs/logo.png" alt="">
+            <span>HKY</span>
+        </div>
         <nav>
             <ul>
                 <li :class="{ active: activeMenu === 'home' }" @click="isActive('home')">home</li>
@@ -52,13 +55,35 @@ export default {
     padding: 25px 0;
 
     .logo {
-        width: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            margin-right: 5px;
+        }
+
+        span {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 25px;
+            line-height: 30px;
+            color: $Font_color;
+        }
     }
 
     ul {
         // list-style: none;
         display: flex;
         gap: 50px;
+
+        @include breakpoint(xs) {
+            gap: 20px;
+        }
+
+        @include breakpoint(sm) {
+            gap: 20px;
+        }
 
         li {
             font-size: 16px;
@@ -77,11 +102,13 @@ export default {
             }
 
             @include breakpoint(xs) {
-                font-size: 15px;
+                font-size: 12px;
+                font-weight: bold;
             }
 
             @include breakpoint(sm) {
-                font-size: 15px;
+                font-size: 13px;
+                font-weight: bold;
             }
 
         }

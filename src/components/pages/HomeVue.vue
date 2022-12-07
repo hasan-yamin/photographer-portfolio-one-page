@@ -99,8 +99,11 @@ export default {
 
 .root {
     width: 100%;
+    padding-top: 50px;
     background-size: cover;
     display: flex;
+    justify-content: center;
+    align-items: flex-start;
     background-image: url('../../imgs/home-bg.png');
     height: 1170px;
 
@@ -118,7 +121,17 @@ export default {
         flex-direction: column;
     }
 
+    @include breakpoint(md) {
+        height: 500px;
+    }
 
+    @include breakpoint(lg) {
+        height: 900px;
+    }
+
+    @include breakpoint(xl) {
+        height: 1000px;
+    }
 
     .info {
         width: 50%;
@@ -126,12 +139,15 @@ export default {
         flex-direction: column;
         justify-content: center;
         align-items: flex-start;
+        padding-left: 100px;
 
         @include breakpoint(xs) {
             width: 100%;
             align-items: center;
             justify-content: center;
             margin-top: 70px;
+            padding-left: 0;
+            text-align: center;
         }
 
         @include breakpoint(sm) {
@@ -139,6 +155,8 @@ export default {
             align-items: center;
             justify-content: center;
             margin-top: 70px;
+            padding-left: 0;
+            text-align: center;
         }
 
         h2 {
@@ -146,19 +164,41 @@ export default {
             font-size: 40px;
             line-height: 48px;
             margin-bottom: 30px;
-            margin-left: 30px;
+            text-align: left;
+
+            @include breakpoint(xs) {
+
+                text-align: center;
+            }
+
+            @include breakpoint(sm) {
+
+                text-align: center;
+            }
         }
 
         p {
             font-size: 16px;
             letter-spacing: 1px;
             margin-bottom: 30px;
-            margin-left: 30px;
+            text-align: left;
+
+            @include breakpoint(xs) {
+
+                text-align: center;
+            }
+
+            @include breakpoint(sm) {
+
+                text-align: center;
+            }
         }
 
         .buttons {
             margin-bottom: 30px;
-            margin-left: 30px;
+            // margin-left: 30px;
+            display: flex;
+            gap: 10px;
 
             button {
                 padding: 10px 20px;
@@ -166,13 +206,22 @@ export default {
                 border: none;
                 border-radius: 20px;
                 color: #fff;
+                cursor: pointer;
 
                 &:first-child {
                     background-color: $Font_color;
+
+                    &:hover {
+                        background-color: $hover;
+                    }
                 }
 
                 &:last-child {
                     background-color: #000;
+
+                    &:hover {
+                        background-color: $hover3;
+                    }
                 }
             }
         }
@@ -227,15 +276,12 @@ export default {
     }
 }
 
-
-
-
-
 .achievment {
     h2 {
         text-transform: uppercase;
         font-size: 40px;
         line-height: 48px;
+        margin-top: 60px;
         margin-bottom: 30px;
     }
 
@@ -248,6 +294,7 @@ export default {
 
     .cards {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 25px;

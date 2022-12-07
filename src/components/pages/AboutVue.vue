@@ -65,6 +65,24 @@ export default {
         .movable {
             width: 700px;
             position: relative;
+            animation-name: circletoright;
+            animation-iteration-count: infinite;
+            animation-duration: 4s;
+            animation-timing-function: ease-in-out;
+
+            @keyframes circletoright {
+                from {
+                    transform: rotate(0deg);
+                }
+
+                50% {
+                    transform: rotate(180deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
 
             @include breakpoint(xs) {
                 width: 350px;
@@ -93,6 +111,9 @@ export default {
         margin-bottom: 80px;
         text-transform: uppercase;
         cursor: pointer;
+        &:hover{
+                background-color: $hover3;
+            }
     }
 }
 </style>
