@@ -13,8 +13,8 @@
             <font-awesome-icon icon="fa-sharp fa-solid fa-alien" /> -->
             <p>It is a long established fact that a reader will be distracted by the readable content </p>
             <div class="buttons">
-                <button type="button">About Us</button>
-                <button type="button">Get A Quote</button>
+                <button type="button" @click="isActive('about')">About Us</button>
+                <button type="button" @click="isActive('contact')">Get A Quote</button>
             </div>
             <div class="arrows">
                 <span class="prev"><img src="../../imgs/prev.png" alt=""></span>
@@ -90,6 +90,11 @@ export default {
     components: {
         AboutVue, PortfolioVue, ContactVue,
     },
+    methods:{
+        isActive(value) {
+            this.$store.dispatch('setViewSection', value)
+        },
+    }
 }
 </script>
 
@@ -99,7 +104,6 @@ export default {
 
 .root {
     width: 100%;
-    // padding-top: 50px;
     background-size: cover;
     display: flex;
     justify-content: center;
@@ -140,6 +144,7 @@ export default {
         justify-content: center;
         align-items: flex-start;
         padding-left: 100px;
+        padding-top: 100px;
 
         @include breakpoint(xs) {
             width: 100%;
@@ -148,6 +153,7 @@ export default {
             margin-top: 70px;
             padding-left: 0;
             text-align: center;
+            padding-top: 0;
         }
 
         @include breakpoint(sm) {
@@ -157,6 +163,7 @@ export default {
             margin-top: 70px;
             padding-left: 0;
             text-align: center;
+            padding-top: 0;
         }
 
         h2 {
@@ -333,6 +340,8 @@ export default {
 }
 
 .testimonial {
+    margin-top: 70px;
+
     h2 {
         text-transform: uppercase;
         font-size: 40px;
