@@ -4,16 +4,14 @@
       <the-header></the-header>
     </base-container>
   </header>
-  <section class="home">
-    <!-- <base-container> -->
+  <section class="home" v-if="activeMenu === 'home'">
     <home-vue></home-vue>
-    <!-- </base-container> -->
   </section>
 
+  <about-vue v-if="activeMenu === 'about'"></about-vue>
+  <portfolio-vue v-if="activeMenu === 'portfolio'"></portfolio-vue>
+  <contact-vue v-if="activeMenu === 'contact'"></contact-vue>
 
-  <about-vue></about-vue>
-  <portfolio-vue></portfolio-vue>
-  <contact-vue></contact-vue>
   <the-footer></the-footer>
 </template>
 
@@ -30,11 +28,23 @@ export default {
   components: {
     BaseContainer,
     TheHeader,
-    HomeVue,
+     HomeVue,
     AboutVue,
     PortfolioVue,
     ContactVue,
     TheFooter,
+  },
+  computed: {
+    activeMenu: {
+      get() {
+        return this.getViewSection()
+      },
+    }
+  },
+  methods: {
+    getViewSection() {
+      return this.$store.getters.getViewSection
+    }
   }
 }
 </script>
@@ -58,26 +68,6 @@ export default {
 
 header {
   width: 100%;
-  height: 50px;
   background-color: $BG_color;
- 
-}
-
-.home {
-  // width: 100%;
-  height: 1170px;
-  background-image: url('./imgs/home-bg.png');
-
-  @include breakpoint(xs) {
-    background-image: none;
-    background-color: $BG_color;
-    height: auto;
-  }
-
-  @include breakpoint(sm) {
-    background-image: none;
-    background-color: $BG_color;
-    height: auto;
-  }
 }
 </style>
